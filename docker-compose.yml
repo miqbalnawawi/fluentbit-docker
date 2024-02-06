@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  fluentbit:
+    image: cr.fluentbit.io/fluent/fluent-bit:2.1.4
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    depends_on: [victorialogs]
+    ports:
+      - "5140:5140"
